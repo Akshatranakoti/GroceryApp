@@ -1,5 +1,6 @@
 import 'package:grocery_app/all_imports.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -29,6 +30,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    String tag = "HomePage";
+    Logger.message(tag, "value");
+    Logger.sucess(tag, "value");
+    Logger.error(tag, "value");
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.blue390191,

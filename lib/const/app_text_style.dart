@@ -1,4 +1,4 @@
-import 'all_imports.dart';
+import '../all_imports.dart';
 
 class AppTextStyle {
   static TextStyle black20Bold = const TextStyle(

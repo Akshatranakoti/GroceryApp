@@ -1,4 +1,4 @@
-import 'all_imports.dart';
+import '../all_imports.dart';
 
 class AppColors {
   static Color blue390191 = _colorFromHex("390191");

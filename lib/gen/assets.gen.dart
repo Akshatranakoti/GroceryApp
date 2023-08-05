@@ -11,6 +11,11 @@ import 'package:flutter/widgets.dart';
 
 class Assets {
   Assets._();
+
+  static const AssetGenImage appIcon = AssetGenImage('assets/app_icon.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [appIcon];
 }
 
 class AssetGenImage {

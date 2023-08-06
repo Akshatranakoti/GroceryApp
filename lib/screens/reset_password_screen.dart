@@ -1,4 +1,5 @@
 import 'package:grocery_app/all_imports.dart';
+import 'package:grocery_app/widgets/screen_background.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   static String routeName = "resetPasswordScreen";
@@ -7,21 +8,17 @@ class ResetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(children: [
-          SizedBoxHelper.sizedBox100,
-          Assets.appIcon
-              .image(height: MediaQuery.of(context).size.height * 0.25),
-          SizedBoxHelper.sizedBox20,
-          CustomTextField(
-              controller: TextEditingController(),
-              iconData: Icons.email,
-              hintText: AppStrings.email),
-          SizedBoxHelper.sizedBox20,
-          CustomButton(onTap: () {}, title: AppStrings.resetPassword),
-        ]),
-      ),
+      body: ScreenBackground(children: [
+        SizedBoxHelper.sizedBox100,
+        Assets.appIcon.image(height: MediaQuery.of(context).size.height * 0.25),
+        SizedBoxHelper.sizedBox20,
+        CustomTextField(
+            controller: TextEditingController(),
+            iconData: Icons.email,
+            hintText: AppStrings.email),
+        SizedBoxHelper.sizedBox20,
+        CustomButton(onTap: () {}, title: AppStrings.resetPassword),
+      ]),
     );
   }
 }

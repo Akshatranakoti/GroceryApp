@@ -14,4 +14,7 @@ class SizedBoxHelper {
   static SizedBox get sizedBox20 => SizedBox(
         height: AppDimen.px20,
       );
+  static SizedBox get sizedBox100 => SizedBox(
+        height: AppDimen.px100,
+      );
 }

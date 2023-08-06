@@ -1,10 +1,9 @@
-import 'package:grocery_app/screens/reset_password_screen.dart';
+import 'package:grocery_app/all_imports.dart';
 
-import '../all_imports.dart';
 
-class LoginScreen extends StatelessWidget {
-  static String get routeName => "loginScreen";
-  const LoginScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  static String routeName = "signUpScreen";
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +12,10 @@ class LoginScreen extends StatelessWidget {
         padding: EdgeInsets.all(AppDimen.px20),
         child: Column(
           children: [
-            Assets.appIcon
-                .image(height: MediaQuery.of(context).size.height * 0.25),
-            SizedBoxHelper.sizedBox20,
+            CustomTextField(
+                controller: TextEditingController(),
+                iconData: Icons.person,
+                hintText: AppStrings.userName),
             CustomTextField(
                 controller: TextEditingController(),
                 iconData: Icons.email,
@@ -25,12 +25,16 @@ class LoginScreen extends StatelessWidget {
                 controller: TextEditingController(),
                 iconData: Icons.password,
                 hintText: AppStrings.password),
+            CustomTextField(
+                controller: TextEditingController(),
+                iconData: Icons.password,
+                hintText: AppStrings.confirmPassword),
             SizedBoxHelper.sizedBox20,
             CustomButton(onTap: () {}, title: AppStrings.login),
             SizedBoxHelper.sizedBox10,
             InkWell(
               onTap: () {
-                Navigator.pushReplacementNamed(context, SignUpScreen.routeName);
+                Navigator.pushReplacementNamed(context, LoginScreen.routeName);
               },
               child: RichText(
                   text: TextSpan(
@@ -38,19 +42,9 @@ class LoginScreen extends StatelessWidget {
                       style: AppTextStyle.grey696969_18,
                       children: [
                     TextSpan(
-                        text: AppStrings.signUp,
-                        style: AppTextStyle.blue_20Bold)
+                        text: AppStrings.login, style: AppTextStyle.blue_20Bold)
                   ])),
             ),
-            TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                      context, ResetPasswordScreen.routeName);
-                },
-                child: Text(
-                  AppStrings.resetPassword,
-                  style: AppTextStyle.grey696969_18,
-                ))
           ],
         ),
       ),

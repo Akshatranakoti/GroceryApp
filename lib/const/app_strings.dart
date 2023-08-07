@@ -8,4 +8,7 @@ class AppStrings {
   static String get userName => "Username";
   static String get confirmPassword => "Confirm Password";
   static String get resetPassword => "Reset Password";
+  static String get camera => "Camera";
+  static String get gallery => "Gallery";
+  static String get addImage => "Add an Image";
 }

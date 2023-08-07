@@ -11,3 +11,4 @@ export '../widgets/custom_text_field.dart';
 export '../widgets/custom_button.dart';
 export  'package:grocery_app/screens/login_screen.dart';
 export 'package:grocery_app/screens/signup_screen.dart';
+export 'package:image_picker/image_picker.dart';

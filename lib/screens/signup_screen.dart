@@ -1,4 +1,5 @@
 import 'package:grocery_app/all_imports.dart';
+import 'package:grocery_app/widgets/image_picker.dart';
 import 'package:grocery_app/widgets/screen_background.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -10,10 +11,12 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       body: ScreenBackground(
         children: [
+          ImagePickerWidget(),
           CustomTextField(
               controller: TextEditingController(),
               iconData: Icons.person,
               hintText: AppStrings.userName),
+          SizedBoxHelper.sizedBox10,
           CustomTextField(
               controller: TextEditingController(),
               iconData: Icons.email,
@@ -23,6 +26,7 @@ class SignUpScreen extends StatelessWidget {
               controller: TextEditingController(),
               iconData: Icons.password,
               hintText: AppStrings.password),
+          SizedBoxHelper.sizedBox10,
           CustomTextField(
               controller: TextEditingController(),
               iconData: Icons.password,

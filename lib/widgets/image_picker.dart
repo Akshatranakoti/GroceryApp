@@ -13,7 +13,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
   final ImagePicker imagePicker = ImagePicker();
   File? _selectedFile;
   Future _pickImage(ImageSource imageSource) async {
-    final file = await imagePicker.pickImage(source: ImageSource.gallery);
+    final file = await imagePicker.pickImage(source: imageSource);
     _selectedFile = File(file!.path);
     setState(() {});
   }

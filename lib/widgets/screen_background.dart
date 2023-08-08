@@ -8,18 +8,24 @@ class ScreenBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whiteFEFFFFE,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(
-                left: AppDimen.px20,
-                right: AppDimen.px20,
-                top: MediaQuery.of(context).padding.top),
-            child: Column(children: children),
+      body: SingleChildScrollView(
+        child: SizedBox(
+
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                    left: AppDimen.px20,
+                    right: AppDimen.px20,
+                    top: MediaQuery.of(context).padding.top),
+                child: Column(children: children),
+              ),
+              Assets.poster.image()
+            ],
           ),
-          Assets.poster.image()
-        ],
+        ),
       ),
     );
   }

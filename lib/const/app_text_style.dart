@@ -12,4 +12,6 @@ class AppTextStyle {
       color: AppColors.whiteFEFFFFE, fontSize: 20, fontWeight: FontWeight.bold);
   static TextStyle get blue_20Bold => TextStyle(
       color: AppColors.blue390191, fontSize: 20, fontWeight: FontWeight.bold);
+  static TextStyle get red_15 =>
+      TextStyle(color: AppColors.redFE2E44, fontSize: 15);
 }

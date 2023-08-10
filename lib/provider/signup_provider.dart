@@ -23,6 +23,14 @@ class SignUpProvider extends ChangeNotifier {
 
   getProfileImage(File file) {
     selectedProfileImage = file;
+    notifyListeners();
+  }
+
+  bool _obscureText = true;
+  bool get obscureText => _obscureText;
+  updateObscureText() {
+    _obscureText = !obscureText;
+    notifyListeners();
   }
 
   validateForm() {

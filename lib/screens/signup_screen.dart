@@ -14,7 +14,7 @@ class SignUpScreen extends StatelessWidget {
         children: [
           ImagePickerWidget(
             errorMessage: provider.profileError,
-            getProfileImage: provider.getProfileImage,
+            getProfileImage: provider.getProfileImage,file: provider.selectedProfileImage,
           ),
           CustomTextField(
               controller: provider.usernameController,
@@ -32,12 +32,30 @@ class SignUpScreen extends StatelessWidget {
             iconData: Icons.password,
             hintText: AppStrings.password,
             errorMessage: provider.passwordError,
+            obscureText: provider.obscureText,
+            suffixIcon: IconButton(
+              icon: Icon(provider.obscureText
+                  ? Icons.remove_red_eye
+                  : Icons.visibility_off),
+              onPressed: () {
+                provider.updateObscureText();
+              },
+            ),
           ),
           CustomTextField(
             controller: provider.confirmPasswordController,
             iconData: Icons.password,
             hintText: AppStrings.confirmPassword,
             errorMessage: provider.confirmPasswordError,
+            obscureText: provider.obscureText,
+            suffixIcon: IconButton(
+              icon: Icon(provider.obscureText
+                  ? Icons.remove_red_eye
+                  : Icons.visibility_off),
+              onPressed: () {
+                provider.updateObscureText();
+              },
+            ),
           ),
           SizedBoxHelper.sizedBox20,
           CustomButton(

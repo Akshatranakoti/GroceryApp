@@ -9,6 +9,12 @@ class LoginProvider extends ChangeNotifier {
 
   String _passwordError = "";
   String get passwordError => _passwordError;
+  bool _obscureText = true;
+  bool get obscureText => _obscureText;
+  updateObscureText() {
+    _obscureText = !obscureText;
+    notifyListeners();
+  }
 
   validateForm() {
     _emailError = ValidationHelper.validateEmail(emailController.text);

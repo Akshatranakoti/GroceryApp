@@ -28,6 +28,15 @@ class LoginScreen extends StatelessWidget {
             iconData: Icons.password,
             hintText: AppStrings.password,
             errorMessage: provider.passwordError,
+            obscureText: provider.obscureText,
+            suffixIcon: IconButton(
+              icon: Icon(provider.obscureText
+                  ? Icons.remove_red_eye
+                  : Icons.visibility_off),
+              onPressed: () {
+                provider.updateObscureText();
+              },
+            ),
           ),
           SizedBoxHelper.sizedBox20,
           CustomButton(

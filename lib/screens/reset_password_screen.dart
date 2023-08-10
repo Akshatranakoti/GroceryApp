@@ -8,22 +8,24 @@ class ResetPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ResetPasswordProvider>(
-      builder: (context,provider,child) {
-        return ScreenBackground(children: [
-            SizedBoxHelper.sizedBox100,
-            Assets.appIcon.image(height: MediaQuery.of(context).size.height * 0.25),
-            SizedBoxHelper.sizedBox20,
-            CustomTextField(
-                controller: provider.emailController,
-                iconData: Icons.email,
-                hintText: AppStrings.email,
-                errorMessage: provider.emailError,),
-            SizedBoxHelper.sizedBox20,
-            CustomButton(onTap: () {}, title: AppStrings.resetPassword),
-          ]);
-      }
-    );
-    
+    return Consumer<ResetPasswordProvider>(builder: (context, provider, child) {
+      return ScreenBackground(children: [
+        SizedBoxHelper.sizedBox100,
+        Assets.appIcon.image(height: MediaQuery.of(context).size.height * 0.25),
+        SizedBoxHelper.sizedBox20,
+        CustomTextField(
+          controller: provider.emailController,
+          iconData: Icons.email,
+          hintText: AppStrings.email,
+          errorMessage: provider.emailError,
+        ),
+        SizedBoxHelper.sizedBox20,
+        CustomButton(
+            onTap: () {
+              provider.validateForm();
+            },
+            title: AppStrings.resetPassword),
+      ]);
+    });
   }
 }

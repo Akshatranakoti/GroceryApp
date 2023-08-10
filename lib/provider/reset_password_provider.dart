@@ -6,6 +6,9 @@ class ResetPasswordProvider extends ChangeNotifier{
 
   String _emailError = "";
  String get emailError => _emailError;
-
+  validateForm() {
+    _emailError = ValidationHelper.validateEmail(emailController.text);
+    notifyListeners();
+  }
 
 }

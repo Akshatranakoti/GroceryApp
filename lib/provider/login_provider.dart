@@ -5,12 +5,14 @@ class LoginProvider extends ChangeNotifier {
   TextEditingController passwordController = TextEditingController();
 
   String _emailError = "";
- String get emailError => _emailError;
+  String get emailError => _emailError;
 
-   String _passwordError = "";
-    String get passwordError => _passwordError;
+  String _passwordError = "";
+  String get passwordError => _passwordError;
 
-
-
-
+  validateForm() {
+    _emailError = ValidationHelper.validateEmail(emailController.text);
+    _passwordError = ValidationHelper.validatePassword(passwordController.text);
+    notifyListeners();
+  }
 }

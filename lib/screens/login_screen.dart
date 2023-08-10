@@ -10,54 +10,55 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<LoginProvider>(
-        builder: (context,provider,child) {
-          return ScreenBackground(
-            children: [
-              Assets.appIcon
-                  .image(height: MediaQuery.of(context).size.height * 0.25),
-              SizedBoxHelper.sizedBox20,
-              CustomTextField(
-                  controller: provider.emailController,
-                  iconData: Icons.email,
-                  hintText: AppStrings.email,
-                  errorMessage: provider.emailError,),
-              SizedBoxHelper.sizedBox10,
-              CustomTextField(
-                  controller: provider.passwordController,
-                  iconData: Icons.password,
-                  hintText: AppStrings.password,
-                  errorMessage: provider.passwordError,),
-              SizedBoxHelper.sizedBox20,
-              CustomButton(onTap: () {}, title: AppStrings.login),
-              SizedBoxHelper.sizedBox10,
-              InkWell(
-                onTap: () {
-                  Navigator.pushReplacementNamed(context, SignUpScreen.routeName);
-                },
-                child: RichText(
-                    text: TextSpan(
-                        text: "${AppStrings.createAnAccount},",
-                        style: AppTextStyle.grey696969_18,
-                        children: [
-                      TextSpan(
-                          text: AppStrings.signUp,
-                          style: AppTextStyle.blue_20Bold)
-                    ])),
-              ),
-              TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(
-                        context, ResetPasswordScreen.routeName);
-                  },
-                  child: Text(
-                    AppStrings.resetPassword,
+    return Consumer<LoginProvider>(builder: (context, provider, child) {
+      return ScreenBackground(
+        children: [
+          Assets.appIcon
+              .image(height: MediaQuery.of(context).size.height * 0.25),
+          SizedBoxHelper.sizedBox20,
+          CustomTextField(
+            controller: provider.emailController,
+            iconData: Icons.email,
+            hintText: AppStrings.email,
+            errorMessage: provider.emailError,
+          ),
+          SizedBoxHelper.sizedBox10,
+          CustomTextField(
+            controller: provider.passwordController,
+            iconData: Icons.password,
+            hintText: AppStrings.password,
+            errorMessage: provider.passwordError,
+          ),
+          SizedBoxHelper.sizedBox20,
+          CustomButton(
+              onTap: () {
+                provider.validateForm();
+              },
+              title: AppStrings.login),
+          SizedBoxHelper.sizedBox10,
+          InkWell(
+            onTap: () {
+              Navigator.pushReplacementNamed(context, SignUpScreen.routeName);
+            },
+            child: RichText(
+                text: TextSpan(
+                    text: "${AppStrings.createAnAccount},",
                     style: AppTextStyle.grey696969_18,
-                  ))
-            ],
-          );
-        }
+                    children: [
+                  TextSpan(
+                      text: AppStrings.signUp, style: AppTextStyle.blue_20Bold)
+                ])),
+          ),
+          TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, ResetPasswordScreen.routeName);
+              },
+              child: Text(
+                AppStrings.resetPassword,
+                style: AppTextStyle.grey696969_18,
+              ))
+        ],
       );
-    
+    });
   }
 }

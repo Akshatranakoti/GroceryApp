@@ -3,7 +3,10 @@ import 'dart:io';
 import 'package:grocery_app/all_imports.dart';
 
 class ImagePickerWidget extends StatefulWidget {
-  const ImagePickerWidget({super.key});
+  final String errorMessage;
+  final Function(File) getProfileImage;
+  const ImagePickerWidget(
+      {super.key, required this.errorMessage, required this.getProfileImage});
 
   @override
   State<ImagePickerWidget> createState() => _ImagePickerWidgetState();
@@ -16,6 +19,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
     final file = await imagePicker.pickImage(source: imageSource);
     _selectedFile = File(file!.path);
     setState(() {});
+    widget.getProfileImage(_selectedFile!);
   }
 
   _backgroundImage() {
@@ -66,7 +70,13 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
                   );
                 });
           },
-        )
+        ),
+        if (widget.errorMessage.isNotEmpty)
+          Text(
+            widget.errorMessage,
+            style: AppTextStyle.red_15,
+          ),
+        SizedBoxHelper.sizedBox10
       ],
     );
   }

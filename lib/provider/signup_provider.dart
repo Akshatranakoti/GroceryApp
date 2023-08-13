@@ -1,6 +1,9 @@
+import 'dart:developer';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:grocery_app/all_imports.dart';
+import 'package:grocery_app/model/error/firebase_auth_error.dart';
 import 'package:grocery_app/repo/auth_repo/auth_repo_implementation.dart';
 
 import '../model/dto/signup_dto.dart';
@@ -45,16 +48,34 @@ class SignUpProvider extends ChangeNotifier {
     _profileError =
         selectedProfileImage == null ? "Please select an Image" : "";
     notifyListeners();
+    if (_emailError.isEmpty &&
+        _usernameError.isEmpty &&
+        _passwordError.isEmpty &&
+        _confirmPasswordError.isEmpty &&
+        profileError.isEmpty) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   AuthRepoImpl authRepoImpl = AuthRepoImpl();
   signUp() async {
-    await authRepoImpl.signUp(SignupDto(
-        username: usernameController.text,
-        signUpPayload: SignUpPayload(
-            email: emailController.text,
-            password: passwordController.text,
-            returnSecureToken: true),
-        imageUrl: ""));
+    if (true) {
+      try {
+        await authRepoImpl.signUp(SignupDto(
+            username: usernameController.text,
+            signUpPayload: SignUpPayload(
+                email: emailController.text,
+                password: passwordController.text,
+                returnSecureToken: true),
+            imageUrl: ""));
+      } on DioException catch (e) {
+        FirebaseAuthError firebaseAuthError = FirebaseAuthError.fromJson(
+            e.response!.data as Map<String, dynamic>);
+        log(firebaseAuthError.error!.message!.toString());
+        SnackBarHelper.erroSnackBar(firebaseAuthError.error!.message!);
+      }
+    }
   }
 }

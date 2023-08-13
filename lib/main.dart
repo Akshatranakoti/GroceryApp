@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create:(_)=>LoginProvider()),
-        ChangeNotifierProvider(create:(_)=>SignUpProvider()),
-        ChangeNotifierProvider(create:(_)=>ResetPasswordProvider()),
+        ChangeNotifierProvider(create: (_) => LoginProvider()),
+        ChangeNotifierProvider(create: (_) => SignUpProvider()),
+        ChangeNotifierProvider(create: (_) => ResetPasswordProvider()),
       ],
       child: MaterialApp(
         scaffoldMessengerKey: SnackBarHelper.scaffoldMessengerKey,

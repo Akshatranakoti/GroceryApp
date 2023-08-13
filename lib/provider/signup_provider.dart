@@ -1,6 +1,9 @@
 import 'dart:io';
 
 import 'package:grocery_app/all_imports.dart';
+import 'package:grocery_app/repo/auth_repo/auth_repo_implementation.dart';
+
+import '../model/dto/signup_dto.dart';
 
 class SignUpProvider extends ChangeNotifier {
   TextEditingController emailController = TextEditingController();
@@ -42,5 +45,16 @@ class SignUpProvider extends ChangeNotifier {
     _profileError =
         selectedProfileImage == null ? "Please select an Image" : "";
     notifyListeners();
+  }
+
+  AuthRepoImpl authRepoImpl = AuthRepoImpl();
+  signUp() async {
+    await authRepoImpl.signUp(SignupDto(
+        username: usernameController.text,
+        signUpPayload: SignUpPayload(
+            email: emailController.text,
+            password: passwordController.text,
+            returnSecureToken: true),
+        imageUrl: ""));
   }
 }

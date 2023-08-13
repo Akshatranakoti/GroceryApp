@@ -14,7 +14,8 @@ class SignUpScreen extends StatelessWidget {
         children: [
           ImagePickerWidget(
             errorMessage: provider.profileError,
-            getProfileImage: provider.getProfileImage,file: provider.selectedProfileImage,
+            getProfileImage: provider.getProfileImage,
+            file: provider.selectedProfileImage,
           ),
           CustomTextField(
               controller: provider.usernameController,
@@ -60,7 +61,8 @@ class SignUpScreen extends StatelessWidget {
           SizedBoxHelper.sizedBox20,
           CustomButton(
               onTap: () {
-                provider.validateForm();
+                //provider.validateForm();
+                provider.signUp();
               },
               title: AppStrings.signUp),
           SizedBoxHelper.sizedBox10,

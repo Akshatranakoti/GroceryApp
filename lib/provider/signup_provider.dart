@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:grocery_app/all_imports.dart';
+import 'package:grocery_app/model/dto/update_user_info_dto.dart';
 import 'package:grocery_app/model/error/firebase_auth_error.dart';
 import 'package:grocery_app/repo/auth_repo/auth_repo_implementation.dart';
 
@@ -60,16 +61,25 @@ class SignUpProvider extends ChangeNotifier {
   }
 
   AuthRepoImpl authRepoImpl = AuthRepoImpl();
+  updateUserInfo(String idToken) async {
+    await authRepoImpl.updateUserInfo(UpdateUserInfoDto(
+        displayName: usernameController.text,
+        idToken: idToken,
+        photoUrl: "",
+        returnSecureToken: true));
+  }
+
   signUp() async {
     if (true) {
       try {
-        await authRepoImpl.signUp(SignupDto(
+        final response = await authRepoImpl.signUp(SignupDto(
             username: usernameController.text,
             signUpPayload: SignUpPayload(
                 email: emailController.text,
                 password: passwordController.text,
                 returnSecureToken: true),
             imageUrl: ""));
+        updateUserInfo(response.idToken!);
       } on DioException catch (e) {
         FirebaseAuthError firebaseAuthError = FirebaseAuthError.fromJson(
             e.response!.data as Map<String, dynamic>);

@@ -68,7 +68,7 @@ class SignUpProvider extends ChangeNotifier {
         photoUrl: "",
         returnSecureToken: true));
   }
-
+//signup method
   signUp() async {
     if (true) {
       try {

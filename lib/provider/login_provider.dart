@@ -16,6 +16,7 @@ class LoginProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+
   validateForm() {
     _emailError = ValidationHelper.validateEmail(emailController.text);
     _passwordError = ValidationHelper.validatePassword(passwordController.text);
